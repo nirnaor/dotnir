@@ -13,7 +13,7 @@
 # mkdir -p mongodb
 # cp -R -n mongodb-osx-x86_64-2.4.8/ mongodb
 # rm -rf mongodb-osx*
-# touch ~/.bash_profile | echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.bash_profile
+# THIS IS NOT NEEDED ANYMORE touch ~/.bash_profile | echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.bash_profile
 
 # sudo easy_install pip
 
@@ -23,4 +23,5 @@
 # touch ~/.zshrc | echo "#This is the ZSHRC file" >> ~/.zshrc
 # chsh -s /usr/local/bin/zsh $USER
 # sudo mv /etc/{zshenv,zshrc}
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+# curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.zshrc
