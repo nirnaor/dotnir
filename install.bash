@@ -32,3 +32,4 @@
 # brew install tmux
 # cat aliases.txt >> ~/.zshrc
 # brew install git
+# Great
