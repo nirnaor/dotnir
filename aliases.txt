@@ -1,0 +1,23 @@
+# apps
+alias p=python
+alias g=git
+alias tm=tmux
+
+# win
+alias bi="cd /Volumes/DataHD/dev/win.com/bi/server/src"
+alias gdk="cd /Volumes/DataHD/dev/win.com/gdk/"
+alias gdkprod="ssh -i /Volumes/DataHD/dev/win.com/win.pem ubuntu@gdk.win.com"
+alias biprod="ssh -i /Volumes/DataHD/dev/win.com/win.pem ubuntu@bi.win.com"
+
+# private
+alias dotnir="cd /Volumes/DataHD/dev/dotnir"
+
+
+# Shell stuuf
+alias c=clear
+alias x=exit
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'

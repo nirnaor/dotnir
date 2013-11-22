@@ -24,4 +24,10 @@
 # chsh -s /usr/local/bin/zsh $USER
 # sudo mv /etc/{zshenv,zshrc}
 # curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.zshrc
+# echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.zshrc
+
+# TODO: This is not working 
+# curl -sS https://www.macupdate.com/download/40034/iTerm2_v1_0_0.zip > iTerm2_v1_0_0.zip
+
+# brew install tmux
+cat aliases.txt >> ~/.zshrc
