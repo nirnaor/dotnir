@@ -18,8 +18,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/neocomplete'
+" Plugin 'Shougo/neocomplete'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
@@ -29,7 +28,7 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
 
-let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
 
 
 " All of your Plugins must be added before the following line
@@ -48,7 +47,7 @@ call vundle#end()            " required
 
 set nocompatible
 filetype plugin on
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
@@ -169,8 +168,8 @@ match OverLength /\%81v.\+/
 
 nmap <Leader>b :NERDTreeFind<CR>
 set colorcolumn=79
-let @q='079lF i
-'
+"let @q='079lF i
+"'
 set noswapfile
 set backspace=indent,eol,start
 set nopaste
