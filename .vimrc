@@ -22,11 +22,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
-Plugin 'bendavis78/vim-polymer'
 Plugin 'mattn/emmet-vim'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'heavenshell/vim-jsdoc'
 
 " let g:neocomplete#enable_at_startup = 1
 
@@ -187,3 +187,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
+map <space> :lnext <CR>
+
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description  = 1
+let g:jsdoc_additional_descriptions  = 1

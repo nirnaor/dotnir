@@ -2,6 +2,7 @@ echo "find me at dotnir .bashrc"
 # app
 alias p=python
 alias g=git
+alias gs=git stauts
 alias tm=tmux
 
 
@@ -13,4 +14,6 @@ alias dotnir="cd /Volumes/DataHD/dev/dotnir"
 alias c=clear
 alias x=exit
 
-tmux
+
+# rbend
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
