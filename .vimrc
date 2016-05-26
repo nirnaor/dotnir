@@ -18,7 +18,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'Shougo/neocomplete'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
@@ -27,8 +27,13 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'vitalk/vim-simple-todo'
+Plugin 'vim-scripts/repmo.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
-" let g:neocomplete#enable_at_startup = 1
+
+
 
 
 " All of your Plugins must be added before the following line
@@ -139,9 +144,6 @@ nnoremap <C-H> <C-W><C-H>
 
 
 
-" "complete"
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#auto_completion_start_length = 4
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -186,9 +188,18 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers = ['pylint']
+
 
 map <space> :lnext <CR>
 
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description  = 1
 let g:jsdoc_additional_descriptions  = 1
+
+au BufRead,BufNewFile *.hamlc set ft=haml
+
+" ultisnips
+" let g:UltiSnipsExpandTrigger='<Enter>'
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
