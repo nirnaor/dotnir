@@ -33,3 +33,5 @@
 # cat aliases.txt >> ~/.zshrc
 # brew install git
 # Great
+
+brew install nvim

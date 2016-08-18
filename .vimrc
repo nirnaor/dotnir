@@ -18,7 +18,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
@@ -31,6 +31,10 @@ Plugin 'vitalk/vim-simple-todo'
 Plugin 'vim-scripts/repmo.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'gcorne/vim-sass-lint'
+Plugin 'slim-template/vim-slim.git'
+
+
 
 
 
@@ -189,6 +193,10 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_sass_checkers=["sass_lint"]
+let g:syntastic_scss_checkers=["sass_lint"]
+let g:syntastic_scss_checkers=["sass_lint"]
+let g:syntastic_ruby_checkers=["mri"]
 
 
 map <space> :lnext <CR>
@@ -203,3 +211,7 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 " let g:UltiSnipsExpandTrigger='<Enter>'
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
+

@@ -2,6 +2,10 @@
     "extends": "google",
     "env": {
       "browser": true,
+      "jasmine": true,
       "webextensions": true
+    },
+    "globals": {
+      "angular": true
     }
 }

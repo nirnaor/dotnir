@@ -18,3 +18,5 @@ alias x=exit
 # rbend
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export LC_CTYPE=en_US.UTF-8
+
+alias nvim="nvim -u ~/.vimrc"
