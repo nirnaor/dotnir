@@ -15,6 +15,8 @@ Plugin 'gmarik/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
+Plugin 'lfilho/cosco.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
 Plugin 'kien/ctrlp.vim'
@@ -192,6 +194,7 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_sass_checkers=["sass_lint"]
 let g:syntastic_scss_checkers=["sass_lint"]
@@ -215,3 +218,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
 
+
+" Cosco
+noremap <Leader>; :CommaOrSemiColon <cr><cr>
