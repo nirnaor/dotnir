@@ -40,3 +40,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 brew install ack
 brew install tig
 brew install vim
+
+git config --global user.name "Nir Naor"
+git config --global user.email nirnaori@gmail.com
