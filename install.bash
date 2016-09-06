@@ -41,5 +41,5 @@ brew install ack
 brew install tig
 brew install vim
 
-git config --global user.name "Nir Naor"
+git config --global user.name "nirnaor"
 git config --global user.email nirnaori@gmail.com
