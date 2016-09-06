@@ -36,3 +36,7 @@ brew install reattach-to-user-namespace
 # Great
 
 brew install nvim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+brew install ack
+brew install tig
+brew install vim

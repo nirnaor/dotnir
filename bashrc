@@ -20,3 +20,5 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export LC_CTYPE=en_US.UTF-8
 
 alias nvim="nvim -u ~/.vimrc"
+
+alias v="/usr/local/Cellar/vim/7.4.2334/bin/vim"
