@@ -35,7 +35,6 @@ brew install reattach-to-user-namespace
 # brew install git
 # Great
 
-brew install nvim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 brew install ack
 brew install tig
@@ -43,3 +42,20 @@ brew install vim
 
 git config --global user.name "nirnaor"
 git config --global user.email nirnaori@gmail.com
+
+brew install node
+npm install -g livereloadx
+brew tap caskroom/cask
+brew install neovim/neovim/neovim
+
+brew cask install spectacle
+brew cask install postman
+brew cask install forklift
+brew cask install dash
+brew cask install spotify
+brew cask install karbiner
+
+
+
+brew install rbenv
+gem install bundler

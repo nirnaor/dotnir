@@ -221,3 +221,11 @@ let g:ycm_server_log_level = 'debug'
 
 " Cosco
 noremap <Leader>; :CommaOrSemiColon <cr><cr>
+
+
+" Paste
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+set showmode
+
+nnoremap <F5> :CtrlPClearAllCaches<CR>
