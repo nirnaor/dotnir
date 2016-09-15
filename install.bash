@@ -22,8 +22,6 @@ export $DOTNIR=`pwd`
 # TODO: This is not working 
 # curl -sS https://www.macupdate.com/download/40034/iTerm2_v1_0_0.zip > iTerm2_v1_0_0.zip
 
-# brew install tmux
-brew install reattach-to-user-namespace
 # cat aliases.txt >> ~/.zshrc
 # brew install git
 # Great
