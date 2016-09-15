@@ -13,7 +13,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dev/other/dotnir</string>
+	<string>~/dev/other/dotnir/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -47,13 +47,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>96 263 606 456 0 0 1280 777 </string>
+	<string>96 292 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 589 620 392 0 0 1920 1177 </string>
+	<string>330 289 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>5 26 1271 741 0 0 1280 777 </string>
+	<string>5 325 570 452 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>236 126 585 452 0 0 1280 777 </string>
+	<string>0 12 1277 758 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>147 170 570 452 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -660,6 +660,14 @@
 	</array>
 	<key>NoSyncInstallationId</key>
 	<string>5AFC33AF-E9C6-4B52-BBDB-2B51670B10D6</string>
+	<key>NoSyncLastTipTime</key>
+	<real>495632751.42335898</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>1</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>494854038.17022097</real>
 	<key>PointerActions</key>
@@ -696,7 +704,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/nirna/dev/other/dotnir</string>
+	<string>/Users/nirna/dev/other/dotnir/iterm2</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -706,12 +714,12 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-09-13T23:11:06Z</date>
+	<date>2016-09-15T11:45:50Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.0.4</string>
+	<string>3.0.9</string>
 </dict>
 </plist>

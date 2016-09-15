@@ -1,5 +1,10 @@
 export DOTNIR=`pwd`
 echo $DOTNIR
-bash $DOTNIR/vim/install.sh
-bash $DOTNIR/tmux/install.sh
-bash $DOTNIR/iterm2/install.sh
+
+apps=( vim tmux iterm2 )
+for i in "${apps[@]}"
+do
+  f=$DOTNIR/$i/install.sh
+  echo executing $f
+  bash $f
+done
