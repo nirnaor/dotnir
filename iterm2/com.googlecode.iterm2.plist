@@ -50,8 +50,10 @@
 	<string>96 292 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 289 620 392 0 0 1280 777 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>269 122 796 473 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>5 325 570 452 0 0 1280 777 </string>
+	<string>5 12 1270 758 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 12 1277 758 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
