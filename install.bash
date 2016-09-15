@@ -1,18 +1,11 @@
 #!/bin/bash
-
+export $DOTNIR=`pwd`
 # Homebrew
 # ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # brew doctor
 # brew update
 
 # TODO: Default installation folder for mongodb - should not be insside the dotnir folder.
-# TODO: Default configuration file for mongo?
-# MongoDB (Broken on mavericks with homebrew so I install manually)
-# curl -O http://downloads.mongodb.org/osx/mongodb-osx-x86_64-2.4.8.tgz
-# tar -zxvf mongodb-osx-x86_64-2.4.8.tgz
-# mkdir -p mongodb
-# cp -R -n mongodb-osx-x86_64-2.4.8/ mongodb
-# rm -rf mongodb-osx*
 # THIS IS NOT NEEDED ANYMORE touch ~/.bash_profile | echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.bash_profile
 
 # sudo easy_install pip
@@ -35,10 +28,6 @@ brew install reattach-to-user-namespace
 # brew install git
 # Great
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-brew install ack
-brew install tig
-brew install vim
 
 git config --global user.name "nirnaor"
 git config --global user.email nirnaori@gmail.com
