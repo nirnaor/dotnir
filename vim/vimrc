@@ -229,3 +229,4 @@ set pastetoggle=<F3>
 set showmode
 
 nnoremap <F5> :CtrlPClearAllCaches<CR>
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
