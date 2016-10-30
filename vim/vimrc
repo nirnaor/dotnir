@@ -19,8 +19,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'lfilho/cosco.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
-Plugin 'kien/ctrlp.vim'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
@@ -35,6 +35,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'gcorne/vim-sass-lint'
 Plugin 'slim-template/vim-slim.git'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'pangloss/vim-javascript'
 
 
 
@@ -62,6 +64,8 @@ filetype plugin on
 
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
+let NERDTreeShowHidden=1
+
 
 
 set ruler
@@ -107,6 +111,25 @@ function! Confirm(message, command)
   end
 endfunc
 
+
+let $opener='open'
+func! WebSearch(url)
+  let searchterm = input('Search: ', expand("<cword>"))
+  if searchterm != ''
+    let url = substitute(a:url, "%query%", searchterm, '')
+    call Browse(url)
+  end
+endfunc
+
+
+func! Browse(url)
+  if has('gui_win32')
+    call system("start " . a:url)
+  else
+    call system($opener . " '" . a:url . "' &")
+  end
+endfunc
+
 noremap <Leader>ff :Ack! <c-r>=EscapeForQuery(expand("<cword>"))<cr><cr>
 vnoremap <Leader>ff "9y:Ack! '<c-r>=EscapeRegisterForQuery(9)<cr>'<cr>
 noremap <Leader>fc :Ack! 
@@ -125,6 +148,16 @@ noremap <Leader>vaf :!git add %<cr>
 noremap <Leader>vap :!git add -p %<cr>
 noremap <Leader>vh :silent !tig %<cr>:redraw!<cr>
 noremap <Leader>vc :Gcommit<cr>
+noremap <Leader>pf :echo @%<cr>
+noremap <Leader>vgb :!git show head~
+noremap <Leader>t :Switch <cr>
+
+
+
+
+
+
+
 
 
 
@@ -161,8 +194,8 @@ let g:rubycomplete_include_objectspace = 1
 
 
 filetype plugin indent on
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 imap <C-Return> <CR><CR><C-o>k<Tab>
 
@@ -170,13 +203,10 @@ nnoremap <Up> :bnext<CR>
 nnoremap <Down> :bprevious<CR>
 
 
-
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 
 nmap <Leader>b :NERDTreeFind<CR>
-set colorcolumn=79
-"let @q='079lF i
 "'
 set noswapfile
 set backspace=indent,eol,start
@@ -211,9 +241,9 @@ let g:jsdoc_additional_descriptions  = 1
 au BufRead,BufNewFile *.hamlc set ft=haml
 
 " ultisnips
-" let g:UltiSnipsExpandTrigger='<Enter>'
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
@@ -230,3 +260,13 @@ set showmode
 
 nnoremap <F5> :CtrlPClearAllCaches<CR>
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+
+set statusline+=%F
+
+au BufReadPost *.rt set syntax=html
+
+
+let g:javascript_plugin_jsdoc = 1
+set foldmethod=syntax
