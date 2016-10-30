@@ -1,7 +1,7 @@
 export DOTNIR=`pwd`
 echo $DOTNIR
 
-apps=( vim tmux iterm2 linters )
+apps=( vim tmux linters bettertouchtool )
 for i in "${apps[@]}"
 do
   f=$DOTNIR/$i/install.sh
