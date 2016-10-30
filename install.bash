@@ -33,16 +33,12 @@ git config --global user.email nirnaori@gmail.com
 brew install node
 npm install -g livereloadx
 brew tap caskroom/cask
-brew install neovim/neovim/neovim
 
-brew cask install spectacle
 brew cask install postman
 brew cask install forklift
 brew cask install dash
 brew cask install spotify
 brew cask install karbiner
-
-
-
-brew install rbenv
-gem install bundler
+brew cask install firefox
+brew cask install kodi
+brew cask install iterm2
