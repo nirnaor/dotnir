@@ -215,22 +215,43 @@ set nopaste
 
 
 " Syntastic recommended settings
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 2
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_sass_checkers=["sass_lint"]
+" let g:syntastic_scss_checkers=["sass_lint"]
+" let g:syntastic_scss_checkers=["sass_lint"]
+" let g:syntastic_ruby_checkers=["mri"]
+
+" http://usevim.com/2016/03/07/linting/
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_sass_checkers=["sass_lint"]
-let g:syntastic_scss_checkers=["sass_lint"]
-let g:syntastic_scss_checkers=["sass_lint"]
-let g:syntastic_ruby_checkers=["mri"]
+let g:syntastic_javascript_eslint_exec = "/Users/nirna/dev/wix/santa-editor/node_modules/eslint/bin/eslint.js"
 
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 map <space> :lnext <CR>
 
@@ -269,4 +290,4 @@ au BufReadPost *.rt set syntax=html
 
 
 let g:javascript_plugin_jsdoc = 1
-set foldmethod=syntax
+" set foldmethod=syntax
