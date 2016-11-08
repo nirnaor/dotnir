@@ -1,0 +1,7 @@
+[core]
+	editor = /usr/local/bin/vim
+[user]
+	name = nirnaor
+	email = nirnaori@gmail.com
+[rebase]
+	instructionFormat = %s [%an]
