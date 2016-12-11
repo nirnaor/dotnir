@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
 Plugin 'lfilho/cosco.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
@@ -37,6 +38,7 @@ Plugin 'gcorne/vim-sass-lint'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'ternjs/tern_for_vim'
 
 
 
@@ -65,6 +67,8 @@ filetype plugin on
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
+let g:NERDTreeWinSize = 60 
+
 
 
 
@@ -273,6 +277,10 @@ let g:ycm_server_log_level = 'debug'
 " Cosco
 noremap <Leader>; :CommaOrSemiColon <cr><cr>
 
+" Tags
+noremap <Leader>, :! ctags -R .  --exclude=.git --exclude=node_modules --exclude=test<cr><cr>
+
+
 
 " Paste
 nnoremap <F3> :set invpaste paste?<CR>
@@ -289,5 +297,11 @@ set statusline+=%F
 au BufReadPost *.rt set syntax=html
 
 
+"
+let g_tern_map_keys=1
 let g:javascript_plugin_jsdoc = 1
 " set foldmethod=syntax
+
+" Tern stuff
+noremap <Leader>dd :TernDef<cr>
+noremap <Leader>vb :Gblame<cr>

@@ -3,6 +3,8 @@
 --ignore-dir=vendor
 --ignore-dir=.idea
 --ignore-dir=nbproject
+--ignore-dir=target
+--ignore-dir=cssCache
 --ignore-file=match:byebug
 
 
