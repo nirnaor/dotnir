@@ -27,8 +27,6 @@ export $DOTNIR=`pwd`
 # Great
 
 
-git config --global user.name "nirnaor"
-git config --global user.email nirnaori@gmail.com
 
 brew install node
 npm install -g livereloadx
@@ -42,3 +40,4 @@ brew cask install karbiner
 brew cask install firefox
 brew cask install kodi
 brew cask install iterm2
+ln -s $DOTNIR/gitconfig ~/.gitconfig

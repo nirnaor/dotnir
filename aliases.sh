@@ -11,6 +11,7 @@ alias gco='git checkout'
 alias ga='git add'
 alias gd='git diff'
 alias mas='git checkout master'
+alias semekars='git reset --hard HEAD'
 
 alias tm=tmux
 

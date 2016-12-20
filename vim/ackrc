@@ -1,4 +1,6 @@
 --ignore-dir=log
+--ignore-dir=bower_components
+--ignore-dir=dist
 --ignore-dir=tmp
 --ignore-dir=vendor
 --ignore-dir=.idea
