@@ -5,6 +5,7 @@ brew install tig
 brew install vim
 
 ln -s $DOTNIR/vim/vimrc ~/.vimrc
+ln -s $DOTNIR/vim/tigrc ~/.tigrc
 ln -s $DOTNIR/vim/ackrc ~/.ackrc
 ln -s $DOTNIR/vim/ctags ~/.ctags
 vim +PluginInstall +qall
