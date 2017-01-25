@@ -12,6 +12,8 @@ alias ga='git add'
 alias gd='git diff'
 alias mas='git checkout master'
 alias semekars='git reset --hard HEAD'
+alias gng='g pull &&  npm i -dd && grunt'
+alias ng='npm i -dd && grunt'
 
 alias tm=tmux
 

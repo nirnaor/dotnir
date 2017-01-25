@@ -67,7 +67,7 @@ filetype plugin on
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
-let g:NERDTreeWinSize = 60 
+let g:NERDTreeWinSize = 30 
 
 
 

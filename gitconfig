@@ -1,5 +1,6 @@
 [core]
 	editor = /usr/local/bin/vim
+	commentChar = *
 [user]
 	name = Nir Naor
 	email = nirnaori@gmail.com
