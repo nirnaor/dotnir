@@ -6,3 +6,5 @@
 	email = nirnaori@gmail.com
 [rebase]
 	instructionFormat = %s [%an]
+[rerere]
+	enabled = true

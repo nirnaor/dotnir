@@ -1,0 +1,3 @@
+set vertical-split = no
+set diff-view = line-number:yes,interval=5 text:yes,commit-title-overflow=no
+

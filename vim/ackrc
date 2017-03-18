@@ -6,7 +6,10 @@
 --ignore-dir=.idea
 --ignore-dir=nbproject
 --ignore-dir=target
+--ignore-dir=build
 --ignore-dir=cssCache
+--ignore-dir=.cache
 --ignore-file=match:byebug
+--ignore-file=match:min
 
 
