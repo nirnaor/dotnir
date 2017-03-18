@@ -3,6 +3,8 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/fzf.vim
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -20,11 +22,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'lfilho/cosco.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'L9'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-surround'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
@@ -67,7 +69,7 @@ filetype plugin on
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
 let NERDTreeShowHidden=1
-let g:NERDTreeWinSize = 30 
+let g:NERDTreeWinSize = 36
 
 
 
@@ -134,9 +136,9 @@ func! Browse(url)
   end
 endfunc
 
-noremap <Leader>ff :Ack! <c-r>=EscapeForQuery(expand("<cword>"))<cr><cr>
-vnoremap <Leader>ff "9y:Ack! '<c-r>=EscapeRegisterForQuery(9)<cr>'<cr>
-noremap <Leader>fc :Ack! 
+noremap <Leader>ff :ag <c-r>=EscapeForQuery(expand("<cword>"))<cr><cr>
+vnoremap <Leader>ff "9y:Ag '<c-r>=EscapeRegisterForQuery(9)<cr>'<cr>
+noremap <Leader>fc :Ag 
 noremap <Leader>da Bd2f"x
 noremap <Leader>fg :call WebSearch("https://google.com/search?q=%query%")<cr>
 noremap <Leader>fo :call WebSearch("http://stackoverflow.com/search?q=%query%")<cr>
