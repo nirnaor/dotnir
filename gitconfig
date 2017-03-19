@@ -8,3 +8,5 @@
 	instructionFormat = %s [%an]
 [rerere]
 	enabled = true
+[push]
+    default = current
