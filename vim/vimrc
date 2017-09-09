@@ -5,6 +5,7 @@ let g:ycm_confirm_extra_conf = 0
 
 
 
+" Pluging ----- {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-rails'
@@ -22,7 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ngmy/vim-rubocop'
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 Plug 'tpope/vim-unimpaired'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'vitalk/vim-simple-todo'
@@ -31,9 +32,11 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'gcorne/vim-sass-lint'
 Plug 'AndrewRadev/switch.vim'
+Plug 'jpo/vim-railscasts-theme'
 Plug 'pangloss/vim-javascript'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm i'}
 call plug#end()
+" }}}
 
 
 
@@ -60,6 +63,7 @@ filetype plugin on
 
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
+noremap <Leader>bb :Buffers<cr>
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 36
 
@@ -137,21 +141,27 @@ noremap <Leader>fo :call WebSearch("http://stackoverflow.com/search?q=%query%")<
 vnoremap <Leader>fg "9y:call Browse("https://google.com/search?q=<c-r>9")<cr>
 vnoremap <Leader>fo "9y:call Browse("http://stackoverflow.com/search?q=<c-r>9")<cr>
 
-noremap <Leader>vs :silent !tig status<cr>:redraw!<cr>
+
+if has('nvim')
+    noremap <Leader>vs  :tabnew % <cr> :execute 'terminal cd '.Utilsget_project_root(expand('%:p:h')).'; tig status'<cr> :tabclose <cr>
+    noremap <Leader>vd  :tabnew % <cr> :execute 'terminal cd '.Utilsget_project_root(expand('%:p:h')).'; git diff %'<cr> :tabclose <cr>
+    noremap <Leader>vh  :tabnew % <cr> :execute 'terminal cd '.Utilsget_project_root(expand('%:p:h')).'; tig %'<cr> :tabclose <cr>
+    " noremap <Leader>vh :silent !tig %<cr>:redraw!<cr>
+else
+    noremap <Leader>vs :execute  '! cd '.Utilsget_project_root(expand('%:p:h')).'; tig status'<cr>
+    noremap <Leader>vd :!clear; tmux clear-history; git diff %<cr>
+    noremap <Leader>vh :silent !tig %<cr>:redraw!<cr>
+endif
 noremap <Leader>vrf :call Confirm("Revert current file?", "!git checkout %")<cr>
 noremap <Leader>vrp :!git co -p %<cr>
-noremap <Leader>vd :!clear; tmux clear-history; git diff %<cr>
 "noremap <Leader>vd :silent !clear; git diff %<cr>:redraw!<cr>
 noremap <Leader>vaf :!git add %<cr>
-noremap <Leader>vap :!git add -p %<cr>
-noremap <Leader>vh :silent !tig %<cr>:redraw!<cr>
 noremap <Leader>vb :Gblame<cr>:redraw!<cr>
 noremap <Leader>vc :Gcommit<cr>
 noremap <Leader>pf :echo @%<cr>
 noremap <Leader>vgb :!git show head~
-noremap <Leader>b :Switch <cr>
 noremap <Leader>t :tabnext <cr>
-noremap <Leader>d :TernDef <cr>
+noremap <Leader>dd :TernDef <cr> <cr>
 
 
 
@@ -217,45 +227,41 @@ set backspace=indent,eol,start
 set nopaste
 
 
+function! Utilsget_project_root(dirname)
+    if a:dirname =~ $DOTFILES.'/config/nvim' && a:dirname !~ $DOTFILES.'/config/nvim/plugged/'
+        return $DOTFILES.'/config/nvim'
+    endif
+    let foundRoot = isdirectory(a:dirname.'/.git') || filereadable(a:dirname.'/package.json')
+    if foundRoot
+        return a:dirname
+    elseif a:dirname == '/'
+        return
+    else
+        " walk to the top of the dir tree
+        let l:parentDir = strpart(a:dirname, 0, strridx(a:dirname, '/'))
+        if isdirectory(l:parentDir)
+            return Utilsget_project_root(l:parentDir)
+        endif
+    endif
+endfunction
 
-" Syntastic recommended settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 2
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_sass_checkers=["sass_lint"]
-" let g:syntastic_scss_checkers=["sass_lint"]
-" let g:syntastic_scss_checkers=["sass_lint"]
-" let g:syntastic_ruby_checkers=["mri"]
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+let g:neomake_scss_enabled_makers = ['sasslint']
+augroup NIRISGREAT
+    au!
+    autocmd BufEnter * let g:neomake_javascript_eslint_exe = Utilsget_project_root(expand('%:p:h')).'/node_modules/.bin/eslint'
+    autocmd! BufWritePost * Neomake
+augroup END
+
+let g:python_host_prog  = '/usr/local/lib/python2.7/'
+
 
 " http://usevim.com/2016/03/07/linting/
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = "/Users/nirna/dev/wix/santa-editor/node_modules/eslint/bin/eslint.js"
-
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
 map <space> :lnext <CR>
 
@@ -286,6 +292,7 @@ noremap <Leader>, :! ctags -R .  --exclude=.git --exclude=node_modules --exclude
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
+colors default
 
 
 set statusline+=%F
@@ -296,5 +303,72 @@ au BufReadPost *.rt set syntax=html
 "
 let g_tern_map_keys=1
 let g:javascript_plugin_jsdoc = 1
+colors railscasts
 " set foldmethod=syntax
 
+
+
+" Schme
+" let base16colorspace=256  " Access colors present in 256 colorspace"
+
+" if has('nvim')
+"     if ( $THEME =~ 'base16' )
+"         execute "colorscheme ".$THEME
+"     else
+"         colorscheme base16-chalk
+"     endif
+" else
+"     colorscheme PaperColor
+" endif
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" " Abbrevations --- {{{{
+" iabbrev 'hireracy' hierarchy
+" iabbrev inheritence 'inheritance'
+" iabbrev unnecesary unnecessary
+" iabbrev 'destory' destroy
+" " }}}
+
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>
+
+vnoremap <leader>v" `><esc>i"<esc>gv `<<esc>i"
+" nnoremap H _
+nnoremap L $
+inoremap jk <esc>
+" inoremap <esc> <nop>
+
+" augroup indentation
+"     autocmd BufWritePre,BufRead *.html :normal gg=G
+" augroup END
+
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F(vi(<cr>
+
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap il{ :<c-u>normal! F{vi{<cr>
+
+augroup markdown
+    onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+    onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
+augroup END
+
+" statusline --- {{{{
+set statusline=%f         " Path to the file
+set statusline+=%=        " Switch to the right side
+set statusline+=%l        " Current line
+set statusline+=/         " Separator
+set statusline+=%L        " Total lines
+" }}}
+
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+
+set foldlevelstart=0

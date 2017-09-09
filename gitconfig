@@ -7,6 +7,6 @@
 [rebase]
 	instructionFormat = %s [%an]
 [rerere]
-	enabled = true
+	enabled = false
 [push]
     default = current
