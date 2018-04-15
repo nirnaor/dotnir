@@ -1,4 +1,11 @@
 /node_modules/
+/dist/
 *.min.js.map
+*.min.js
 *.xml
 /js/vendor
+pLoaderConfig.js
+*.js.map
+*.coreUtils.js.map
+santa-core/santa-core-utils/dist/coreUtils.js.map
+*.log.txt

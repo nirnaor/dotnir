@@ -12,3 +12,6 @@ ln -s $DOTNIR/vim/agignore ~/.agignore
 ln -s $DOTNIR/vim/agignore ~/.agignore
 ln -s $DOTNIR/vim/ctags ~/.ctags
 vim +PluginInstall +qall
+
+curl https://raw.githubusercontent.com/sudavid4/dotfiles/master/mru > ~/mru.sh
+curl https://raw.githubusercontent.com/sudavid4/dotfiles/master/bin/preview.rb > /bin/preview.rb

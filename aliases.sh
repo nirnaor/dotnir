@@ -37,3 +37,11 @@ alias fargen='npm i && grunt'
 alias rmf=`rm -rf`
 alias diverge='git cherry-pick ab1cacce01ec21c8c5148c77072ee22a03c83f57'
 alias nodiverge='git revert ab1cacce01ec21c8c5148c77072ee22a03c83f57'
+alias dotnir='cd ~/dev/other/dotnir'
+alias links='ls -l node_modules | grep ^l'
+alias lb='gb | head -n 10'
+
+# Wix stuff.
+alias wgpl='nvm use && git pull && yarn && grunt'
+alias localdebug='sudo npm run local-debug -- --debugger-port 9280 --local-santa ~/dev/wix/santa-repos/santa'
+alias wyg='nvm use && yarn && grunt'

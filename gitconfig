@@ -10,3 +10,7 @@
 	enabled = false
 [push]
     default = current
+[alias]
+	add-commit = !git add -A && git commit
+[diff]
+	tool = vimdiff

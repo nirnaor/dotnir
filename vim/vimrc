@@ -9,9 +9,12 @@ let g:ycm_confirm_extra_conf = 0
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-rails'
+Plug 'sickill/vim-pasta'
+Plug 'sudavid4/mysql-mru.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
 Plug 'lfilho/cosco.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFocus', 'NERDTreeFind'] }
 Plug 'L9'
@@ -24,6 +27,7 @@ Plug 'rking/ag.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'benekastah/neomake'
+Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-unimpaired'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'vitalk/vim-simple-todo'
@@ -34,9 +38,18 @@ Plug 'gcorne/vim-sass-lint'
 Plug 'AndrewRadev/switch.vim'
 Plug 'jpo/vim-railscasts-theme'
 Plug 'pangloss/vim-javascript'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm i'}
+Plug 'leafgarland/typescript-vim'
+Plug 'sudavid4/tern_for_vim', {'for': 'javascript', 'do': 'npm i' } " intellijent navigation and refactor for javascript
+Plug 'sudavid4/vim-js-goToDeclaration'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+
+
+
+
 call plug#end()
 " }}}
+
 
 
 
@@ -63,7 +76,7 @@ filetype plugin on
 
 map <C-n> :NERDTreeToggle<CR>
 noremap <Leader>gn :NERDTreeFind<cr>
-noremap <Leader>bb :Buffers<cr>
+noremap <Leader>bb :Mru<cr>
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize = 36
 
@@ -80,7 +93,8 @@ vnoremap <C-v> "*p
 map! <C-E> <esc>A
 
 
-
+vnoremap // y/<C-R>"<CR>
+set colorcolumn=80
 
 
 " Search {{{1
@@ -162,6 +176,7 @@ noremap <Leader>pf :echo @%<cr>
 noremap <Leader>vgb :!git show head~
 noremap <Leader>t :tabnext <cr>
 noremap <Leader>dd :TernDef <cr> <cr>
+autocmd FileType javascript nnoremap <buffer>gd :call GoToDeclaration()<cr>
 
 
 
@@ -185,12 +200,18 @@ noremap <Leader>c :noh<cr>
 noremap <Leader>er :call RevertFile()<cr>
 noremap <Leader>e"' :s/"/'/g<cr>
 noremap <Leader>e'" :s/'/"/g<cr>
-noremap <C-w> :q<cr>
 " noremap <Leader>rws :%s/\s\+$//<cr>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-H> :wincmd h<cr>
+" nnoremap ,h <C-W>h
+
+
+" david
+nmap \<tab> <plug>(fzf-maps-n)
+xmap \<tab> <plug>(fzf-maps-x)
+omap \<tab> <plug>(fzf-maps-o)
 
 
 
@@ -293,6 +314,9 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
 colors default
+set binary
+set noeol
+set fileformats+=dos
 
 
 set statusline+=%F
@@ -372,3 +396,11 @@ augroup END
 
 
 set foldlevelstart=0
+" autocmd BufWritePre *.js Neoformat
+
+
+
+
+
+" termial stuff
+nnoremap <C-B>s :sp v <cr> :terminal <cr>
