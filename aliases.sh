@@ -1,4 +1,4 @@
-echo "find me at dotnir .bashrc"
+echo "yo find me at dotnir .bashrc"
 # app
 alias p=python
 
@@ -20,8 +20,6 @@ alias tm=tmux
 
 
 # private
-alias dotnir=$DOTNIR
-
 
 # Shell stuuf
 alias c=clear
@@ -45,3 +43,5 @@ alias lb='gb | head -n 10'
 alias wgpl='nvm use && git pull && yarn && grunt'
 alias localdebug='sudo npm run local-debug -- --debugger-port 9280 --local-santa ~/dev/wix/santa-repos/santa'
 alias wyg='nvm use && yarn && grunt'
+
+alias itmomz='cd ~/dev/other/firstbox/frontend'
