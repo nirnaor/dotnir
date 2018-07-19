@@ -45,4 +45,6 @@ brew cask install firefox
 brew cask install whatsapp
 brew cask install flycut
 brew cask install bettertouchtool
-ln -s gitconfig ~/.gitconfig
+brew cask install spectacle
+
+ln gitconfig ~/.gitconfig

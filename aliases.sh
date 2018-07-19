@@ -25,7 +25,7 @@ alias tm=tmux
 alias c=clear
 alias x=exit
 
-alias viewer='cd ~/dev/wix/santa'
+alias viewer='cd ~/dev/wix/santa-repos/santa'
 alias editor='cd ~/dev/wix/santa-repos/santa-editor'
 alias core='cd ~/dev/wix/santa-repos/santa-core'
 alias ssr='cd ~/dev/wix/santa-repos/santa-site-renderer'
