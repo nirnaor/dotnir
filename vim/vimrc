@@ -347,7 +347,7 @@ au BufReadPost *.rt set syntax=html
 "
 let g_tern_map_keys=1
 let g:javascript_plugin_jsdoc = 1
-colors railscasts
+"colors railscasts
 " set foldmethod=syntax
 
 

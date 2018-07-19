@@ -1,8 +1,5 @@
 #!/bin/bash
 # Homebrew
-# ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-# brew doctor
-# brew update
 
 # TODO: Default installation folder for mongodb - should not be insside the dotnir folder.
 # THIS IS NOT NEEDED ANYMORE touch ~/.bash_profile | echo export PATH=$PATH:/Volumes/DataHD/dev/dotnir/mongodb/bin/ >> ~/.bash_profile
@@ -26,10 +23,13 @@
 # Great
 
 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 
 brew install node
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 brew install yarn
+
 
 
 npm install -g livereloadx
@@ -45,4 +45,4 @@ brew cask install firefox
 brew cask install whatsapp
 brew cask install flycut
 brew cask install bettertouchtool
-ln -s $DOTNIR/gitconfig ~/.gitconfig
+ln -s gitconfig ~/.gitconfig
