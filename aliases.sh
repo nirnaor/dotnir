@@ -25,7 +25,7 @@ alias tm=tmux
 alias c=clear
 alias x=exit
 
-alias viewer='cd ~/dev/wix/santa-repos/santa'
+alias viewer='cd ~/dev/wix/santa'
 alias editor='cd ~/dev/wix/santa-repos/santa-editor'
 alias core='cd ~/dev/wix/santa-repos/santa-core'
 alias ssr='cd ~/dev/wix/santa-repos/santa-site-renderer'
@@ -43,5 +43,7 @@ alias lb='gb | head -n 10'
 alias wgpl='nvm use && git pull && yarn && grunt'
 alias localdebug='sudo npm run local-debug -- --debugger-port 9280 --local-santa ~/dev/wix/santa-repos/santa'
 alias wyg='nvm use && yarn && grunt'
+alias grunt='./node_modules/.bin/grunt'
 
-alias itmomz='cd ~/dev/other/firstbox/frontend'
+alias itmomz='cd ~/dev/other/itmomz'
+

@@ -28,15 +28,21 @@
 
 
 brew install node
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+brew install yarn
+
+
 npm install -g livereloadx
 brew tap caskroom/cask
 
+brew cask install iterm2
 brew cask install postman
-brew cask install forklift
+brew cask install google-chrome
 brew cask install dash
 brew cask install spotify
 brew cask install karbiner
 brew cask install firefox
-brew cask install kodi
-brew cask install iterm2
+brew cask install whatsapp
+brew cask install flycut
+brew cask install bettertouchtool
 ln -s $DOTNIR/gitconfig ~/.gitconfig

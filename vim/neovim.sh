@@ -8,3 +8,5 @@ gem install neovim
 pip  install --upgrade neovim
 pip2 install --upgrade neovim
 pip3 install --upgrade neovim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
