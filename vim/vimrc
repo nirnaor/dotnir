@@ -1,149 +1,34 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-let g:ycm_confirm_extra_conf = 0 
-
-
-
-
-" Pluging ----- {{{
+" Critical Start
 call plug#begin('~/.vim/plugged')
+  Plug 'scrooloose/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFocus', 'NERDTreeFind'] }
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'yasuhiroki/github-actions-yaml.vim'
 
-Plug 'tpope/vim-rails'
-Plug 'mhartington/oceanic-next'
-Plug 'sickill/vim-pasta'
-Plug 'sudavid4/mysql-mru.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'w0rp/ale'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFocus', 'NERDTreeFind'] }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'mhartington/oceanic-next'
+  Plug 'morhetz/gruvbox'
 
-Plug 'tpope/vim-surround'
-Plug 'rking/ag.vim'
-Plug 'mattn/emmet-vim'
-" Plug 'benekastah/neomake'
-Plug 'sbdchd/neoformat'
-Plug 'tpope/vim-unimpaired'
-Plug 'vitalk/vim-simple-todo'
-Plug 'honza/vim-snippets'
-Plug 'gcorne/vim-sass-lint'
-Plug 'AndrewRadev/switch.vim'
-Plug 'jpo/vim-railscasts-theme'
-Plug 'pangloss/vim-javascript'
-Plug 'sudavid4/tern_for_vim', {'for': 'javascript', 'do': 'npm i' } " intellijent navigation and refactor for javascript
-Plug 'sudavid4/vim-js-goToDeclaration'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'codeindulgence/vim-tig'
+  Plug 'tpope/vim-sleuth'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'iberianpig/tig-explorer.vim'
+
+  Plug 'tpope/vim-commentary'
+
+  " Language specific
+  Plug 'pangloss/vim-javascript' 
+  Plug 'leafgarland/typescript-vim' 
+  Plug 'reasonml-editor/vim-reason-plus'
 
 
+  " Framework specifc
+  Plug 'MaxMEllon/vim-jsx-pretty'
+  Plug 'peitalin/vim-jsx-typescript'
 
-
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
-" }}}
 
-
-
-
-
-let g:deoplete#enable_at_startup = 1
-
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-set nocompatible
-filetype plugin on
-" runtime macros/matchit.vim
-
-map <C-n> :NERDTreeToggle<CR>
-noremap <Leader>gn :NERDTreeFind<cr>
-noremap <Leader>bb :Mru<cr>
-let NERDTreeShowHidden=1
-let g:NERDTreeWinSize = 36
-
-" let b:ale_fixers = ['prettier', 'eslint']
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-
-
-nnoremap <leader>af :ALEFix<cr>
-
-
-set ruler
-set rulerformat=%l,%v
-
-syntax on
-
-vnoremap <C-c> "*y
-vnoremap <C-v> "*p
-map! <C-E> <esc>A
-
-
-vnoremap // y/<C-R>"<CR>
-set colorcolumn=80
-
-set conceallevel=0
-
-" Search {{{1
-set incsearch   " incremental search
-set ignorecase  " ignore case when search
-set smartcase   " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set hlsearch    " highlight search terms
-set wrapscan    " wrap around when searching
-
-" Reduce timeout after <ESC> is received. {{{1
-set ttimeout
-set ttimeoutlen=20
-set notimeout
-set number
-" set nowrap
-
-" Escaped search {{{1
-func! EscapeForQuery(text)
-  let text = substitute(a:text, '\v(\[|\]|\$|\^)', '\\\1', 'g')
-  let text = substitute(text, "'", "''", 'g')
-  return text
-endfunc
-" confirm hazardus command()
 function! Confirm(message, command)
   let yesno = confirm(a:message, "&Yes\n&No", 2)
   if (yesno == 1)
@@ -153,291 +38,128 @@ function! Confirm(message, command)
   end
 endfunc
 
-
-let $opener='open'
-func! WebSearch(url)
-  let searchterm = input('Search: ', expand("<cword>"))
-  if searchterm != ''
-    let url = substitute(a:url, "%query%", searchterm, '')
-    call Browse(url)
-  end
-endfunc
+noremap <Leader>gn :NERDTreeFind<cr>
+let NERDTreeShowHidden=1
+let g:NERDTreeWinSize=60
 
 
-func! Browse(url)
-  if has('gui_win32')
-    call system("start " . a:url)
-  else
-    call system($opener . " '" . a:url . "' &")
-  end
-endfunc
+noremap <c-p> :FZF<cr>
+noremap <c-u> :History<cr>
 
-noremap <Leader>ff :Ag <c-r>=EscapeForQuery(expand("<cword>"))<cr><cr>
-" vnoremap <Leader>ff "9y:Ag '<c-r>=EscapeRegisterForQuery(9)<cr>'<cr>
-noremap <Leader>fc :Ag 
-noremap <Leader>da Bd2f"x
-noremap <Leader>fg :call WebSearch("https://google.com/search?q=%query%")<cr>
-noremap <Leader>fo :call WebSearch("http://stackoverflow.com/search?q=%query%")<cr>
-vnoremap <Leader>fg "9y:call Browse("https://google.com/search?q=<c-r>9")<cr>
-vnoremap <Leader>fo "9y:call Browse("http://stackoverflow.com/search?q=<c-r>9")<cr>
-
-
-if has('nvim')
-    " noremap <Leader>vs  :tabnew % <cr> :execute 'terminal cd '.Utilsget_project_root(expand('%:p:h')).'; tig status'<cr> :tabclose <cr>
-    noremap <Leader>vd  :tabnew % <cr> :execute 'terminal cd '.Utilsget_project_root(expand('%:p:h')).'; git diff %'<cr> :tabclose <cr>
-    noremap <Leader>vh  :tabnew % <cr> :execute 'terminal cd '.Utilsget_project_root(expand('%:p:h')).'; tig %'<cr> :tabclose <cr>
-    " noremap <Leader>vh :silent !tig %<cr>:redraw!<cr>
-else
-    " noremap <Leader>vs :execute  '! cd '.Utilsget_project_root(expand('%:p:h')).'; tig status'<cr>
-    noremap <Leader>vd :!clear; tmux clear-history; git diff %<cr>
-    noremap <Leader>vh :silent !tig %<cr>:redraw!<cr>
-endif
-noremap <Leader>vrf :call Confirm("Revert current file?", "!git checkout %")<cr>
-noremap <Leader>vrp :!git co -p %<cr>
-"noremap <Leader>vd :silent !clear; git diff %<cr>:redraw!<cr>
-noremap <Leader>vaf :!git add %<cr>
-noremap <Leader>vb :Gblame<cr>:redraw!<cr>
-noremap <Leader>vc :Gcommit<cr>
-noremap <Leader>pf :echo @%<cr>
-noremap <Leader>vgb :!git show head~
-noremap <Leader>t :tabnext <cr>
-noremap <Leader>dd :TernDef <cr> <cr>
-autocmd FileType javascript nnoremap <buffer>gd :call GoToDeclaration()<cr>
-
-
-
-
-
-
-
-
-
-
-" autocmd BufWritePost *.js,*.jsx,*.py ALEFix
-
-
-noremap <Leader>ef :e <C-R>=expand("%:p:h") . $delimiter <cr>
-noremap <Leader>et :tabe <C-R>=expand("%:p:h") . $delimiter <cr>
-noremap <Leader>rf :read <C-R>=expand("%:p:h") . $delimiter <cr>
-noremap <Leader>ew :w<cr>
-noremap <Leader>ww :w<cr>
-noremap <Leader>wq :wq<cr>
-noremap <Leader>wa :wa<cr>
-noremap <Leader>c :noh<cr>
-noremap <Leader>er :call RevertFile()<cr>
-noremap <Leader>e"' :s/"/'/g<cr>
-noremap <Leader>e'" :s/'/"/g<cr>
-" noremap <Leader>rws :%s/\s\+$//<cr>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> :wincmd h<cr>
-" nnoremap ,h <C-W>h
+colorscheme gruvbox
+inoremap jk <esc>
 
 
-" david
-nmap \<tab> <plug>(fzf-maps-n)
-xmap \<tab> <plug>(fzf-maps-x)
-omap \<tab> <plug>(fzf-maps-o)
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>ee :e<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+noremap <Leader>c :noh<cr>
+noremap <Leader>qq :q<cr>
+noremap <Leader>n :set invnumber<cr>
+noremap <Leader>ww :w<cr>
+noremap <Leader>wd :pwd<cr>
+noremap <Leader>wq :wq<cr>
+noremap <Leader>swp :! rm -rf ~/.local/share/nvim/swap/<cr>
+noremap <Leader>pi :PlugInstall<cr>
+noremap <Leader>ff :Ag <c-r>=EscapeForQuery(expand("<cword>"))<cr><cr>
+noremap <Leader>fp :echo @% <cr>
+noremap <Leader>fc :Ag 
+noremap <Leader>t :tabnext <cr>
+noremap <Leader>vrf :call Confirm("Revert current file?", "!git checkout %")<cr>
+noremap <Leader>vdf  :Git diff %<cr>
+noremap <Leader>vdm  :Git diff master<cr>
+noremap <Leader>vrs  :Git reset --hard<cr>
+noremap <Leader>vmas  :Git checkout master<cr>
+noremap <Leader>vsync  :! git checkout master && git reset --hard @~60 && git pull && git checkout - && git merge master <cr>
+noremap <Leader>vco  :Git checkout -b 
+noremap <Leader>vcb  :Git checkout - <cr>
+noremap <Leader>vce  :Git checkout 
+noremap <Leader>vpr  :! gh cpr %<cr>
+noremap <Leader>vdom  :Git diff origin/master<cr>
+noremap <Leader>vdbm  :Git diff master %<cr>
+noremap <Leader>vst  :Git stash<cr>
+noremap <Leader>vsp  :Git stash pop<cr>
+noremap <Leader>vap  :Git add -p %<cr>
+noremap <Leader>vaf  :Git add %<cr>
+noremap <Leader>vcm  :Git commit<cr>
+noremap <Leader>vcf  :Git commit --no-verify<cr>
+noremap <Leader>vca  :Gcommit --amend --no-verify<cr>
+noremap <Leader>vpu  :Gpush<cr>
+noremap <Leader>vpl  :Gpull<cr>
+noremap <Leader>vbl  :Gblame<cr>
+noremap <Leader>vhs  :TigOpenCurrentFile<cr>
+noremap <Leader>gs :TigStatus<cr>
+noremap <Leader>vs :Git status<cr>
+noremap <Leader>gbr :GBrowse!<cr>
+noremap <Leader>nde :!node %:p<cr>
+noremap <Leader>tsr :CocRestart<cr>
+
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript
+
+set exrc
 
 
 
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-let g:rubycomplete_include_object = 1
-let g:rubycomplete_include_objectspace = 1
+
+
+set notimeout
+
+vnoremap <C-c> "*y
+
+vnoremap <C-v> "*p
+map! <C-E> <esc>A
+
+set ignorecase
+" Critical End
+
+set nofixendofline
 
 
 
+so ~/.config/nvim/coc.vim
 
+" Gary file navigation
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ef :edit %%
+map <leader>cd :cd %% <cr>
+map <leader>gal :cd ~/dev/wix/gallery <cr>
+nnoremap <leader><leader> <c-^>
 
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
-imap <C-Return> <CR><CR><C-o>k<Tab>
+function! HandleURL()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;]*')
+  echo s:uri
+  if s:uri != ""
+    silent exec "!open '".s:uri."'"
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+map <leader>uu :call HandleURL()<cr>
 
-nnoremap <Up> :bnext<CR>
-nnoremap <Down> :bprevious<CR>
-
-
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
-
-nmap <Leader>b :NERDTreeFind<CR>
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
-noremap <c-p> :FZF<cr>
-
-"'
-set noswapfile
-set backspace=indent,eol,start
-set nopaste
-
-
-function! Utilsget_project_root(dirname)
-    if a:dirname =~ $DOTFILES.'/config/nvim' && a:dirname !~ $DOTFILES.'/config/nvim/plugged/'
-        return $DOTFILES.'/config/nvim'
-    endif
-    let foundRoot = isdirectory(a:dirname.'/.git') || filereadable(a:dirname.'/package.json')
-    if foundRoot
-        return a:dirname
-    elseif a:dirname == '/'
-        return
+" Hide status line start
+let s:hidden_all = 1
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
     else
-        " walk to the top of the dir tree
-        let l:parentDir = strpart(a:dirname, 0, strridx(a:dirname, '/'))
-        if isdirectory(l:parentDir)
-            return Utilsget_project_root(l:parentDir)
-        endif
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
     endif
 endfunction
 
-
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_jsx_enabled_makers = ['eslint']
-" let g:neomake_scss_enabled_makers = ['sasslint']
-" augroup NIRISGREAT
-"     au!
-"     autocmd BufEnter * let g:neomake_javascript_eslint_exe = Utilsget_project_root(expand('%:p:h')).'/node_modules/.bin/eslint'
-"     autocmd! BufWritePost * Neomake
-" augroup END
-
-let g:python_host_prog  = '/usr/local/lib/python2.7/'
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+" Hide status line start
 
 
-" http://usevim.com/2016/03/07/linting/
-" set statusline+=%#warningmsg#
-" set statusline+=%*
-
-
-map <space> :lnext <CR>
-
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description  = 1
-let g:jsdoc_additional_descriptions  = 1
-
-au BufRead,BufNewFile *.hamlc set ft=haml
-
-
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-
-
-
-" Tags
-noremap <Leader>, :! ctags -R .  --exclude=.git --exclude=node_modules --exclude=test<cr><cr>
-
-
-
-" Paste
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
-set showmode
-colors default
-set binary
-set noeol
-set fileformats+=dos
-
-
-set statusline+=%F
-
-au BufReadPost *.rt set syntax=html
-
-
-"
-let g_tern_map_keys=1
-let g:javascript_plugin_jsdoc = 1
-"colors railscasts
-" set foldmethod=syntax
-
-
-
-" Schme
-" let base16colorspace=256  " Access colors present in 256 colorspace"
-
-" if has('nvim')
-"     if ( $THEME =~ 'base16' )
-"         execute "colorscheme ".$THEME
-"     else
-"         colorscheme base16-chalk
-"     endif
-" else
-"     colorscheme PaperColor
-" endif
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-
-" " Abbrevations --- {{{{
-" iabbrev 'hireracy' hierarchy
-" iabbrev inheritence 'inheritance'
-" iabbrev unnecesary unnecessary
-" iabbrev 'destory' destroy
-" " }}}
-
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>
-
-vnoremap <leader>v" `><esc>i"<esc>gv `<<esc>i"
-" nnoremap H _
-nnoremap L $
-inoremap jk <esc>
-" inoremap <esc> <nop>
-
-" augroup indentation
-"     autocmd BufWritePre,BufRead *.html :normal gg=G
-" augroup END
-
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap il( :<c-u>normal! F(vi(<cr>
-
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap il{ :<c-u>normal! F{vi{<cr>
-
-augroup markdown
-    onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
-    onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
-augroup END
-
-" statusline --- {{{{
-set statusline=%f         " Path to the file
-set statusline+=%=        " Switch to the right side
-set statusline+=%l        " Current line
-set statusline+=/         " Separator
-set statusline+=%L        " Total lines
-" }}}
-
-" Vimscript file settings ---------------------- {{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
-
-
-set foldlevelstart=0
-" autocmd BufWritePre *.js Neoformat
-
-
-
-
-
-" termial stuff
-nnoremap <C-B>s :sp v <cr> :terminal <cr>
-
-
-" For Neovim 0.1.3 and 0.1.4
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" Or if you have Neovim >= 0.1.5
-if (has("termguicolors"))
- set termguicolors
-endif
-
-" Theme
-syntax enable
-colorscheme OceanicNext
-
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
