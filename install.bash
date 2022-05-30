@@ -32,7 +32,7 @@ brew install yarn
 
 
 
-npm install -g livereloadx
+#npm install -g livereloadx
 brew tap caskroom/cask
 
 brew cask install iterm2
@@ -46,5 +46,8 @@ brew cask install whatsapp
 brew cask install flycut
 brew cask install bettertouchtool
 brew cask install spectacle
+brew cask install visual-studio-code
+brew cask install marta
+brew install tig
 
 ln gitconfig ~/.gitconfig
