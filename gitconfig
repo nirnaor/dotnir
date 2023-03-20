@@ -1,5 +1,5 @@
 [core]
-	editor = /usr/local/bin/vim
+	editor = nvim
 	commentChar = *
 [user]
 	name = Nir Naor
